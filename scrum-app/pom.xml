@@ -19,7 +19,11 @@
 		<skip.integration.tests>false</skip.integration.tests>
 		<sonar.exclusions>**/model/**,**/config/**,**/ScrumApplication.java</sonar.exclusions>
 	</properties>
-
+<properties>
+  <sonar.projectKey>aksh153026_back-end</sonar.projectKey>
+  <sonar.organization>aksh153026</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -30,6 +34,11 @@
 <artifactId>sonar-maven-plugin</artifactId>
 <version>3.2</version>
 </dependency>
+	<properties>
+  <sonar.projectKey>aksh153026_back-end</sonar.projectKey>
+  <sonar.organization>aksh153026</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
