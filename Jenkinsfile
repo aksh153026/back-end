@@ -55,18 +55,14 @@ node("vagrant1"){
     stage ('Push image to sonartype nexus') { // take that image and push to artifactory
         
      
+   
         
-      script {
-        docker.withRegistry('http://192.168.29.240:8083/', '1234') {
 
         sh """#!/bin/bash 
+        sudo docker login -u admin -p admin http://192.168.29.240:8083/
         sudo docker run -p 8080:8080 192.168.29.240:8083/backend:1.0.1 
         """
 
-       
-    }
-          
-      }
          }
        
     
