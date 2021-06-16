@@ -27,14 +27,49 @@ pipeline {
             }
          
     
-    }
-	node("vagrant1"){
+     stage ('Push image to sonartype nexus') { // take that image and push to artifactory
+        
+         
     
-stage("com"){
-    sh """#!/bin/bash
-        rm -r scrum-ui
-        git clone https://github.com/aksh153026/scrum-ui.git -b dev
-        """
-}
+        steps {
+        
+      script {
+        docker.withRegistry('http://192.168.29.240:8083/', '1234') {
 
+        bat "cd scrum-app && docker build -t 192.168.29.240:8083/backend:1.0.1 . && docker push 192.168.29.240:8083/backend:1.0.1"
+
+       
+    }
+          
+      }
+         }
+       
+    }
+
+}
+        
+    
+}
+node("vagrant1"){
+    
+    stage ('Push image to sonartype nexus') { // take that image and push to artifactory
+        
+     
+        
+      script {
+        docker.withRegistry('http://192.168.29.240:8083/', '1234') {
+
+        sh """#!/bin/bash 
+        sudo docker run -p 8080:8080 192.168.29.240:8083/backend:1.0.1 
+        """
+
+       
+    }
+          
+      }
+         }
+       
+    
+
+    
 }
