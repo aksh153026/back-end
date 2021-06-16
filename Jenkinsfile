@@ -62,17 +62,14 @@ node("vagrant1"){
         
      
         
-      script {
-        docker.withRegistry('http://192.168.29.240:8083/', '1234') {
+      
+        
 
         sh """#!/bin/bash 
+        sudo docker login -u admin -p admin http://192.168.29.240:8083/
         sudo docker run -p 8080:8080 192.168.29.240:8083/backend:1.0.1 
         """
 
-       
-    }
-          
-      }
          }
        
     
