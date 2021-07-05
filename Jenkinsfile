@@ -248,8 +248,6 @@ pipeline {
 				sudo docker login -u admin -p admin http://192.168.29.240:8083/
 				sudo docker container rm -f scrum-postgres	
 				sudo docker container rm -f scrum-app
-				sudo docker container rm -f scrum-ui
-				sudo docker rmi -f 192.168.29.240:8083/front-end:4.0.1
 				sudo docker run -d -p 5432:5432 --name scrum-postgres -v scrum-data:/var/lib/postgresql/data -e POSTGRES_DB=scrum -e POSTGRES_USER=scrum -e POSTGRES_PASSWORD=scrum postgres:9.6-alpine
 				sudo docker run -d -p 8080:8080 --name scrum-app  -e DB_SERVER=scrum-postgres -e POSTGRES_DB=scrum -e POSTGRES_USER=scrum -e POSTGRES_PASSWORD=scrum --link scrum-postgres 192.168.29.240:8083/backend:${env.BUILD_ID}
 				"""
