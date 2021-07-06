@@ -35,7 +35,7 @@ pipeline {
         }
         stage('GIT BRANCH NAME1') {
             steps {
-			echo GIT_BRANCH_NAME
+			echo GIT_BRANCH_NAME +"http://192.168.29.240:8080/github-webhook/"
             }
         }
 		
