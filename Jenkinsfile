@@ -161,7 +161,8 @@ pipeline {
 			}
       
 			steps{   
-
+				script {
+				docker.withRegistry('http://192.168.29.240:8083/', '1234') {
 				sh """#!/bin/bash 
 				sudo docker login -u admin -p admin http://192.168.29.240:8083/
 				sudo docker volume create scrum-data
@@ -190,7 +191,8 @@ pipeline {
 			}
       
 			steps{   
-
+				script {
+				docker.withRegistry('http://192.168.29.240:8083/', '1234') {
 				sh """#!/bin/bash 
 				sudo docker login -u admin -p admin http://192.168.29.240:8083/
 				sudo docker volume create scrum-data
@@ -217,7 +219,8 @@ pipeline {
 			}
       
 			steps{   
-
+				script {
+				docker.withRegistry('http://192.168.29.240:8083/', '1234') { 
 				sh """#!/bin/bash 
 				sudo docker login -u admin -p admin http://192.168.29.240:8083/
 				sudo docker volume create scrum-data
