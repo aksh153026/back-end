@@ -3,8 +3,7 @@ pipeline {
   agent {
       label 'master'
   }
-	
-  
+	  
   
     tools {
         git 'Default'
