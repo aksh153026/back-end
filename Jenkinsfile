@@ -4,22 +4,12 @@ pipeline {
       label 'master'
   }  
     tools {
-        git 'Default'
         nodejs 'NodeJS'
 		maven 'MAVEN_HOME' 
         jdk 'jdk1.8' 
     }
     stages {
-		stage('Checkout SCM') {
-            steps {
-               checkout([$class: 'GitSCM', branches: [[name: '*/main'], [name: '*/dev'], [name: '*/qa']],  doGenerateSubmoduleConfigurations: false, 
-                          extensions: [], 
-                          gitTool: 'Default', userRemoteConfigs: [
-                         [credentialsId: 'b0e5e069-fefe-4f2e-8cbc-d05703a18d3d', url: 'https://github.com/aksh153026/back-end.git']]])
-               
-                
-            }
-        }
+		
         stage('GIT BRANCH NAME') {
             steps {
                 
