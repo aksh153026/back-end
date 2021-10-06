@@ -26,7 +26,7 @@ pipeline {
             steps {
                 
 				script {
-					echo env.GIT_BRANCH_PATH=bat(returnStdout: true, script: "git name-rev --name-only HEAD\")
+					echo bat(returnStdout: true, script: "git name-rev --name-only HEAD\")
 					 env.GIT_BRANCH_PATH=bat(returnStdout: true, script: "git name-rev --name-only HEAD").trim()
     env.GIT_BRANCH_NAME=GIT_BRANCH_PATH.split('remotes/')[1]
      
