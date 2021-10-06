@@ -18,7 +18,6 @@ pipeline {
                           extensions: [], 
                           gitTool: 'Default', userRemoteConfigs: [
                          [credentialsId: 'github',url: 'https://github.com/aksh153026/back-end.git']]])
-               
                 
             }
         }
