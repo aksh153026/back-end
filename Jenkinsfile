@@ -17,7 +17,7 @@ pipeline {
                checkout([$class: 'GitSCM', branches: [[name: '*/main'], [name: '*/dev'], [name: '*/qa']],  doGenerateSubmoduleConfigurations: false, 
                           extensions: [], 
                           gitTool: 'Default', userRemoteConfigs: [
-                         [url: 'https://github.com/aksh153026/back-end.git']]])
+                         [credentialsId: 'github',url: 'https://github.com/aksh153026/back-end.git']]])
                
                 
             }
