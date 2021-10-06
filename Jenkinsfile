@@ -14,8 +14,8 @@ pipeline {
     stages {
 	stage('Checkout SCM') {
             steps {
-               checkout([$class: 'GitSCM', branches: [[name: '*/tags/v3.0/*']],  doGenerateSubmoduleConfigurations: false, 
-                          extensions: [],Refspec: '+refs/tags/v3.0/*:refs/remotes/origin/tags/v3.0/*',
+               checkout([$class: 'GitSCM', branches: [[name: '**/tags/*']],  doGenerateSubmoduleConfigurations: false, 
+                          extensions: [],
                           gitTool: 'Default', userRemoteConfigs: [
                          [credentialsId: 'github',url: 'https://github.com/aksh153026/back-end.git']]])
                 
