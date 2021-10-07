@@ -16,6 +16,9 @@ pipeline {
     stages {
 	stage('Checkout SCM') {
             steps {
+		    echo 'Hello World webhook'
+       echo 'git repository name is :' + repository_name
+       echo 'author of commit is :' + commit_author
                checkout([$class: 'GitSCM', branches: [[name: '**/tags/*']],  doGenerateSubmoduleConfigurations: false, 
                           extensions: [],
                           gitTool: 'Default', userRemoteConfigs: [
