@@ -17,8 +17,8 @@ pipeline {
             steps {
 		    echo 'Hello World webhook'
        echo 'git repository name is :' + ref
-		    echo base_ref
-               checkout([$class: 'GitSCM', branches: [[name: 'main']],  doGenerateSubmoduleConfigurations: false, 
+		    echo 'git repository name is :' +base_ref
+               checkout([$class: 'GitSCM', branches: [[name: 'main'], [name: '*/dev'], [name: '*/qa']],  doGenerateSubmoduleConfigurations: false, 
                           extensions: [],
                           gitTool: 'Default', userRemoteConfigs: [
                          [credentialsId: 'github',url: 'https://github.com/aksh153026/back-end.git']]])
