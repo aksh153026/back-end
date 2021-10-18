@@ -16,7 +16,7 @@ pipeline {
 	stage('Checkout SCM') {
             steps {
 		    echo 'Hello World webhook'
-       echo 'git repository name is :' + repository_name
+       echo 'git repository name is :' + ref
 		    echo base_ref
                checkout([$class: 'GitSCM', branches: [[name: 'main']],  doGenerateSubmoduleConfigurations: false, 
                           extensions: [],
