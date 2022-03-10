@@ -75,11 +75,12 @@ pipeline {
     
 			steps {
 				script  {
-					scannerHome = tool 'sonar_mvn' // the name you have given the Sonar Scanner (Global Tool Configuration)
+					def scannerHome = tool 'sonar_mvn'
+					// the name you have given the Sonar Scanner (Global Tool Configuration)
 				}
     
 				withSonarQubeEnv('sonar_mvn') {
-            
+            echo scannerHome
 					sh "cd scrum-app && mvn clean install && ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mavan -Dsonar.sources=. "
 				}
 			}
