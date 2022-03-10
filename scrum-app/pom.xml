@@ -16,12 +16,8 @@
 	<description>Backend app for Scrum app</description>
 
 	<properties>
-		<java.version>1.8</java.version>
-		<skip.integration.tests>false</skip.integration.tests>
-		<sonar.exclusions>**/model/**,**/config/**,**/ScrumApplication.java</sonar.exclusions>
-		 <sonar.projectKey>aksh153026_back-end</sonar.projectKey>
-  <sonar.organization>aksh153026</sonar.organization>
-  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		
+  <sonar.host.url>https://192.168.29.120:9000</sonar.host.url>
 	</properties>
 
 	<dependencies>
