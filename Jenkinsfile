@@ -64,11 +64,11 @@ pipeline {
 		
 		*/
 		stage ('Code Quality scan back-end')  {
-			when {
+			/* when {
 				expression {   
 					env.GIT_BRANCH_nNAME=='origin/qa' 
 				}
-			}
+			} */
 			tools {
 				jdk "jh" 
 			}
@@ -262,4 +262,6 @@ pipeline {
             
         }
     }*/
+}
+
 }
