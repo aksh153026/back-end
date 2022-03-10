@@ -75,7 +75,7 @@ pipeline {
     
 			steps {
 				script  {
-					def scannerHome = tool 'sonar_mvn'
+					scannerHome = tool 'sonar_mvn'
 					// the name you have given the Sonar Scanner (Global Tool Configuration)
 				}
     
