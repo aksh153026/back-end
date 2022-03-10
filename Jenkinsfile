@@ -8,19 +8,20 @@ pipeline {
     skipDefaultCheckout true
   }
     tools {
-        git 'Default'
+        git 'Default`'
         nodejs 'NodeJS'
         maven 'MAVEN_HOME' 
         jdk 'jdk1.8' 
     }
-
-    stages {
+ /* 
+  stages {
 	stage('Checkout SCM') {
             steps {
 		    echo 'Hello World webhook'
        echo 'git repository name is :' + ref
 		    echo 'git repository name is :' + base_ref
-               checkout([$class: 'GitSCM', branches: [[name: 'main'], [name: '*/dev'], [name: '*/qa']],  doGenerateSubmoduleConfigurations: false, 
+               checkout([$class: 'GitSCM', branches: [[name: 'main'], 
+	       [name: 'dev'], [name: 'qa']],  doGenerateSubmoduleConfigurations: false, 
                           extensions: [],
                           gitTool: 'Default', userRemoteConfigs: [
                          [credentialsId: 'github',url: 'https://github.com/aksh153026/back-end.git']]])
@@ -46,7 +47,7 @@ pipeline {
 			echo GIT_BRANCH_NAME 
             }
         }
-	/*	
+		
         stage ('Compile Stage back-end') {
             when {
 				expression {   
@@ -64,7 +65,7 @@ pipeline {
 		stage ('Code Quality scan back-end')  {
 			when {
 				expression {   
-					env.GIT_BRANCH_NAME=='origin/qa' 
+					env.GIT_BRANCH_nNAME=='origin/qa' 
 				}
 			}
 			tools {
@@ -73,12 +74,12 @@ pipeline {
     
 			steps {
 				script  {
-					scannerHome = tool 'sonar2' // the name you have given the Sonar Scanner (Global Tool Configuration)
+					scannerHome = tool 'sonar_mvn' // the name you have given the Sonar Scanner (Global Tool Configuration)
 				}
     
-				withSonarQubeEnv('sonarmvn') {
+				withSonarQubeEnv('sonar_mvn') {
             
-					bat "cd scrum-app && mvn clean package && mvn sonar:sonar"
+					sh "cd scrum-app && mvn clean install && ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mavan -Dsonar.sources=. "
 				}
 			}
        }
