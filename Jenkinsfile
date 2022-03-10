@@ -33,7 +33,7 @@ pipeline {
 				script {
 					 
 					
-					 env.GIT_BRANCH_PATH=bat(returnStdout: true, script: "git name-rev --name-only HEAD").trim()
+					 env.GIT_BRANCH_PATH=sh(returnStdout: true, script: "git name-rev --name-only HEAD").trim()
 					echo GIT_BRANCH_PATH 
     env.GIT_BRANCH_NAME=GIT_BRANCH_PATH.split('remotes/')[1]
      
@@ -46,7 +46,7 @@ pipeline {
 			echo GIT_BRANCH_NAME 
             }
         }
-		
+	/*	
         stage ('Compile Stage back-end') {
             when {
 				expression {   
@@ -60,7 +60,7 @@ pipeline {
             }
 		}
 		
-		
+		*/
 		stage ('Code Quality scan back-end')  {
 			when {
 				expression {   
@@ -83,6 +83,8 @@ pipeline {
 			}
        }
 	 
+	    
+		/*
 
         stage ('Push dev image to sonartype nexus back-end') { 
         
@@ -228,8 +230,10 @@ pipeline {
 				label 'v-test'
 			}
       
-			steps{   
-				script {
+			steps
+			{   
+				script
+				{
 				docker.withRegistry('http://192.168.29.240:8083/', '1234') { 
 				sh """#!/bin/bash 
 				sudo docker login -u admin -p admin http://192.168.29.240:8083/
@@ -241,8 +245,8 @@ pipeline {
 			
 				"""
 				}
-				}
-			}
+			    }
+			} 
 				
           
 		}
@@ -255,5 +259,5 @@ pipeline {
                 subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'aksh152630@gmail.com'
             
         }
-    }
+    }*/
 }
