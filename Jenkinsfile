@@ -1,7 +1,7 @@
 
 pipeline {    
   agent {
-      label 'master'
+      label 'ubuntu_jsos'
   }  
 	
 	 options {
