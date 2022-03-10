@@ -81,7 +81,7 @@ pipeline {
     
 				withSonarQubeEnv('sonar_mvn1') {
             echo scannerHome
-					sh "cd scrum-app && mvn clean install && ${scannerHome}/bin/sonar-scanner.bat -Dsonar.projectKey=mavan -Dsonar.sources=. "
+					bat "cd scrum-app && mvn clean install && ${scannerHome}/bin/sonar-scanner.bat -Dsonar.projectKey=mavan -Dsonar.sources=. "
 				}
 			}
        }
