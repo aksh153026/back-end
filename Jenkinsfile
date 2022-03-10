@@ -4,9 +4,9 @@ pipeline {
       label 'ubuntu_jsos'
   }  
 	
-	 options {
+	/* options {
     skipDefaultCheckout true
-  }
+  } */
     tools {
         git 'Default`'
         nodejs 'NodeJS'
