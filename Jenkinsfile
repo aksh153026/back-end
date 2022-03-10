@@ -1,7 +1,7 @@
 
 pipeline {    
   agent {
-      label 'ubuntu_jsos'
+      label 'master'
   }  
 	
 	/* options {
@@ -79,7 +79,7 @@ pipeline {
 					// the name you have given the Sonar Scanner (Global Tool Configuration)
 				}
     
-				withSonarQubeEnv('sonar_mvn') {
+				withSonarQubeEnv('sonar_mvn1') {
             echo scannerHome
 					sh "cd scrum-app && mvn clean install && ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mavan -Dsonar.sources=. "
 				}
