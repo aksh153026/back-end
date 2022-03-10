@@ -81,7 +81,7 @@ pipeline {
     
 				withSonarQubeEnv('sonar_mvn') {
          //   echo scannerHome
-					bat "cd scrum-app && mvn -f pom.xml clean package && "+scannerHome+"\\bin\\sonar-scanner.bat -Dsonar.projectKey=mavan -Dsonar.projectName=maven  -Dsonar.projectVersion=1.0 -Dsonar.sources=src/  -Dsonar.java.binaries=target/test-classes/com/techtter/blog/scrum -Dsonar.jacoco.reportsPath=target/jacoco.exec"
+					bat "cd scrum-app && mvn -f pom.xml clean package && "+scannerHome+"\\bin\\sonar-scanner.bat -Dsonar.projectKey=mavan -Dsonar.projectName=maven  -Dsonar.projectVersion=1.0 -Dsonar.sources=src/  -Dsonar.java.binaries=target/test-classes/com/techtter/blog/scrum -Dsonar.jacoco.reportsPath=target/jacoco.exec -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
 				}
 			}
        }
