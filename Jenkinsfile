@@ -78,12 +78,12 @@ pipeline {
 					scannerHome = tool 'sonar_mvn'
 					// the name you have given the Sonar Scanner (Global Tool Configuration)
 				}
-     echo " ${POM_VERSION} "
+    
 				withSonarQubeEnv('sonar_mvn') {
          //   echo scannerHome 
 					
 					bat "cd scrum-app && mvn -f pom.xml clean package && "+scannerHome+"\\bin\\sonar-scanner.bat -Dsonar.projectKey=mavan -Dsonar.projectName=maven  -Dsonar.projectVersion=1.2 -Dsonar.sources=src/  -Dsonar.java.binaries=target/classes/* -Dsonar.java.source=1.8 -Dsonar.jacoco.reportsPath=target/jacoco.exec -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.junit.reportsPath=target/surefire-reports/"
-					echo "${project.version}"
+					echo " ${POM_VERSION} ${project.version}"
 				}
 			}
        }
