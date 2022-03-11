@@ -78,10 +78,7 @@ pipeline {
 					scannerHome = tool 'sonar_mvn'
 					// the name you have given the Sonar Scanner (Global Tool Configuration)
 				}
-     script {
-                    TAG_SELECTOR = readMavenPom("scrum-app/pom.xml").getVersion()
-                }
-                echo("TAG_SELECTOR=${TAG_SELECTOR}")
+     echo " ${POM_VERSION} "
 				withSonarQubeEnv('sonar_mvn') {
          //   echo scannerHome 
 					
