@@ -76,6 +76,9 @@ pipeline {
 			steps {
 				script  {
 					scannerHome = tool 'sonar_mvn'
+					pom = readMavenPom file: 'scrum-app/pom.xml'
+				echo pom.version
+				
 					// the name you have given the Sonar Scanner (Global Tool Configuration)
 				}
     
@@ -85,8 +88,6 @@ pipeline {
 					bat "cd scrum-app && mvn -f pom.xml clean package && "+scannerHome+"\\bin\\sonar-scanner.bat -Dsonar.projectKey=mavan -Dsonar.projectName=maven  -Dsonar.projectVersion=1.2 -Dsonar.sources=src/  -Dsonar.java.binaries=target/classes/* -Dsonar.java.source=1.8 -Dsonar.jacoco.reportsPath=target/jacoco.exec -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.junit.reportsPath=target/surefire-reports/"
 					
 				}
-				pom = readMavenPom file: 'scrum-app/pom.xml'
-				echo pom.version
 				
 			}
        }
