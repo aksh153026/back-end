@@ -122,7 +122,7 @@ pipeline {
 			}*/
      
 			agent {
-				label 'v-test'
+				label 'ubuntu_jsos'
 			}
       
 			steps{   
