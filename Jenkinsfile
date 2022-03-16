@@ -104,7 +104,7 @@ pipeline {
 			steps {
 
 				script {
-					script {
+			
 					
 						
 						withDockerRegistry('http://192.168.29.240:8083/', '1234') {
