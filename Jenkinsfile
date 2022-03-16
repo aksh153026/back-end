@@ -132,14 +132,17 @@ pipeline {
 				script {
 					
 						
-						
-						
-						
-						
-	
-				docker.withRegistry('http://192.168.29.240:8083/', '1234') {
+						withDockerRegistry('http://192.168.29.240:8083/', '1234') {
 				sh """#!/bin/bash 
 				sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}
+			        """
+				}	
+						
+						
+	/*
+				//docker.withRegistry('http://192.168.29.240:8083/', '1234') {
+				//sh """#!/bin/bash 
+				//sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}
 				//sudo docker login -u admin -p admin http://192.168.29.240:8083/
 				//sudo docker volume create scrum-data
 				//sudo docker container rm -f scrum-postgres
@@ -147,7 +150,7 @@ pipeline {
 				//sudo docker run -dit -p 5432:5432 --name scrum-postgres -v scrum-data:/var/lib/postgresql/data -e POSTGRES_DB=scrum -e POSTGRES_USER=scrum -e POSTGRES_PASSWORD=scrum postgres:9.6-alpine
 				//sudo docker run -dit -p 8080:8080 --name scrum-app  -e DB_SERVER=scrum-postgres -e POSTGRES_DB=scrum -e POSTGRES_USER=scrum -e POSTGRES_PASSWORD=scrum --link scrum-postgres 192.168.29.240:8083/backend:${env.BUILD_ID}
 				"""
-				}
+				}*/
 				} 
 			} 
     
