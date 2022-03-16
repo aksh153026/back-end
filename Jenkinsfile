@@ -62,36 +62,7 @@ pipeline {
 		}
 		
 		*/
-	  
-		stage ('Code Quality scan back-end')  {
-			/* when {
-				expression {   
-					env.GIT_BRANCH_nNAME=='origin/qa' 
-				}
-			} */
-			tools {
-				jdk "jh" 
-			}
-    
-			steps {
-				script  {
-					scannerHome = tool 'sonar_mvn'
-					pom = readMavenPom file: 'scrum-app/pom.xml'
-				echo pom.version
-				
-					// the name you have given the Sonar Scanner (Global Tool Configuration)
-				}
-    
-				withSonarQubeEnv('sonar_mvn') {
-         //   echo scannerHome 
-					
-					bat "cd scrum-app && mvn -f pom.xml clean package && "+scannerHome+"\\bin\\sonar-scanner.bat -Dsonar.projectKey=mavan -Dsonar.projectName=maven  -Dsonar.projectVersion=1.2 -Dsonar.sources=src/  -Dsonar.java.binaries=target/classes/* -Dsonar.java.source=1.8 -Dsonar.jacoco.reportsPath=target/jacoco.exec -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.junit.reportsPath=target/surefire-reports/"
-					
-				}
-				
-			}
-       }
-	  stage ('Push dev image to sonartype nexus back-end') { 
+	    stage ('Push dev image to sonartype nexus back-end') { 
         
 			/*when {
 				expression {   
@@ -102,7 +73,7 @@ pipeline {
 			steps {
         
 				script {
-					withDockerRegistry(credentialsId: "1234", url: "http://192.168.29.240:8083/") {
+					docker.withRegistry('http://192.168.29.240:8083/', '1234') {
 
 					bat "cd scrum-app && docker build -t 192.168.29.240:8083/backend:${env.BUILD_ID} . && docker push 192.168.29.240:8083/backend:${env.BUILD_ID}"
 
@@ -144,6 +115,35 @@ pipeline {
           
 		}
 	 
+		stage ('Code Quality scan back-end')  {
+			/* when {
+				expression {   
+					env.GIT_BRANCH_nNAME=='origin/qa' 
+				}
+			} */
+			tools {
+				jdk "jh" 
+			}
+    
+			steps {
+				script  {
+					scannerHome = tool 'sonar_mvn'
+					pom = readMavenPom file: 'scrum-app/pom.xml'
+				echo pom.version
+				
+					// the name you have given the Sonar Scanner (Global Tool Configuration)
+				}
+    
+				withSonarQubeEnv('sonar_mvn') {
+         //   echo scannerHome 
+					
+					bat "cd scrum-app && mvn -f pom.xml clean package && "+scannerHome+"\\bin\\sonar-scanner.bat -Dsonar.projectKey=mavan -Dsonar.projectName=maven  -Dsonar.projectVersion=1.2 -Dsonar.sources=src/  -Dsonar.java.binaries=target/classes/* -Dsonar.java.source=1.8 -Dsonar.jacoco.reportsPath=target/jacoco.exec -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.junit.reportsPath=target/surefire-reports/"
+					
+				}
+				
+			}
+       }
+	
 	    
 		/*
         stage ('Push dev image to sonartype nexus back-end') { 
