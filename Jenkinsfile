@@ -75,7 +75,7 @@ pipeline {
 			}
     
 			steps {
-						node{}
+		               				pipeline{}
 				script  {
 					scannerHome = tool 'sonar_mvn'
 					pom = readMavenPom file: 'scrum-app/pom.xml'
@@ -102,7 +102,7 @@ pipeline {
 			}*/
     
 			steps {
-        
+
 				script {
 					docker.withRegistry('http://192.168.29.240:8083/', '1234') {
 
