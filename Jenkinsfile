@@ -75,6 +75,7 @@ pipeline {
 			}
     
 			steps {
+						node{}
 				script  {
 					scannerHome = tool 'sonar_mvn'
 					pom = readMavenPom file: 'scrum-app/pom.xml'
@@ -127,7 +128,7 @@ pipeline {
 			}
       
 			steps{   
-				node{}
+		
 				script {
 					
 						
