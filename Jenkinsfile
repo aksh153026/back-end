@@ -102,7 +102,7 @@ pipeline {
 			steps {
         
 				script {
-					withDockerRegistry(credentialsId: '1234', url: 'http://192.168.29.240:8083/') {
+					withDockerRegistry(credentialsId: "1234", url: "http://192.168.29.240:8083/") {
 
 					bat "cd scrum-app && docker build -t 192.168.29.240:8083/backend:${env.BUILD_ID} . && docker push 192.168.29.240:8083/backend:${env.BUILD_ID}"
 
@@ -127,7 +127,7 @@ pipeline {
       
 			steps{   
 				script {
-				withDockerRegistry(credentialsId: '1234', url: '[http://192.168.29.240:8083/) {
+				withDockerRegistry(credentialsId: "1234", url: "http://192.168.29.240:8083/") {
 				sh """#!/bin/bash 
 				sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}
 				//sudo docker login -u admin -p admin http://192.168.29.240:8083/
