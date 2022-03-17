@@ -62,7 +62,7 @@ pipeline {
 		}
 		
 		*/
-	    stage ('Push dev image to sonartype nexus back-end') { 
+	/*    stage ('Push dev image to sonartype nexus back-end') { 
         
 			/*when {
 				expression {   
