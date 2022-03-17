@@ -90,17 +90,17 @@ pipeline {
 				expression {   
 					env.GIT_BRANCH_NAME=='origin/dev' 
 				}
-			}*/
+			}
      
 			agent {
 				label 'ubuntu_jsos'
-			}
+			}*/
       
 			steps{   
 				script {
 					withCredentials([usernamePassword(credentialsId: '1234', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-  // available as an env variable, but will be masked if you try to print it out any which way
-  // note: single quotes prevent Groovy interpolation; expansion is by Bourne Shell, which is what you want
+ sshagent(['vagrant_ubuntu_json_version']) {		
+	 
   sh 'echo $PASSWORD'
   // also available as a Groovy variable
   echo USERNAME
@@ -112,7 +112,7 @@ pipeline {
       '''
 						
 sh "sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}"
-     
+ }  
 }
 				} 
 			} 
