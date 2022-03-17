@@ -98,6 +98,16 @@ pipeline {
       
 			steps{   
 				script {
+					withCredentials([usernamePassword(credentialsId: 'amazon', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+  // available as an env variable, but will be masked if you try to print it out any which way
+  // note: single quotes prevent Groovy interpolation; expansion is by Bourne Shell, which is what you want
+  bat 'echo $PASSWORD'
+  // also available as a Groovy variable
+  echo USERNAME
+	echo $PASSWORD					
+  // or inside double quotes for string interpolation
+  echo "username is $USERNAME"
+}
 				docker.withRegistry('http://192.168.29.240:8083/', '1234')  {
 			      sh """#!/bin/bash 
 				sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}
