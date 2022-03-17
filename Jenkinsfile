@@ -90,11 +90,11 @@ pipeline {
 				expression {   
 					env.GIT_BRANCH_NAME=='origin/dev' 
 				}
-			}
+			}*/
      
 			agent {
 				label 'ubuntu_jsos'
-			}*/
+			}
       
 			steps{   
 				script {
