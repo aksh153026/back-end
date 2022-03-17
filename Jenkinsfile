@@ -62,7 +62,7 @@ pipeline {
 		}
 		
 		*/
-	/*    stage ('Push dev image to sonartype nexus back-end') { 
+	  stage ('Push dev image to sonartype nexus back-end') { 
         
 			//when {
 			//	expression {   
@@ -83,7 +83,7 @@ pipeline {
 				}
 			}
        
-		} */
+		} 
 		
 		stage ('Pull image from sonartype nexus in dev server back-end') { // take that image and push to artifactory
 			/*when {
@@ -98,7 +98,7 @@ pipeline {
       
 			steps{   
 				script {
-				withDockerRegistry(credentialsId: "1234", url: "http://192.168.29.240:8083/") {
+				docker.withRegistry('http://192.168.29.240:8083/', '1234')  {
 				//sh """#!/bin/bash 
 			//	sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}
 				//"""
