@@ -102,11 +102,11 @@ pipeline {
 					withCredentials([usernamePassword(credentialsId: '1234', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 	
 	 
- pass=PASSWORD
- /* // also available as a Groovy variable
-   USERNAME
-	echo PASSWORD					
-  // or inside double quotes for string interpolation
+
+					sshagent(['vagrant_ubuntu_json_version']) {
+ // also available as a Groovy variable
+  
+
   echo "username is $USERNAME"
    sh '''
          echo ${PASSWORD} | sudo docker login -u ${USERNAME} http://192.168.29.240:8083/ --password-stdin
@@ -114,13 +114,11 @@ pipeline {
 						
 sh "sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}"
 
- */
+					}
 						
 					}
-				 echo pass
-					sshagent(['vagrant_ubuntu_json_version']) {	
-					echo pass
-					}
+				 
+					
 				} 
 			} 
     
