@@ -104,7 +104,7 @@ pipeline {
   bat 'echo $PASSWORD'
   // also available as a Groovy variable
   echo USERNAME
-	echo $PASSWORD					
+	echo PASSWORD					
   // or inside double quotes for string interpolation
   echo "username is $USERNAME"
 }
