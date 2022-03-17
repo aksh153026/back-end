@@ -107,7 +107,9 @@ pipeline {
 	echo PASSWORD					
   // or inside double quotes for string interpolation
   echo "username is $USERNAME"
-  sh "echo "+ PASSWORD +" | sudo docker login --username "+USERNAME+" --password-stdin"
+   sh '''
+                            echo "${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
+                         '''
 						
 sh "sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}"
      
