@@ -99,9 +99,9 @@ pipeline {
 			steps{   
 				script {
 				docker.withRegistry('http://192.168.29.240:8083/', '1234')  {
-				//sh """#!/bin/bash 
+			      sh """#!/bin/bash 
 				sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}
-				//"""
+				"""
 				}
 				} 
 			} 
