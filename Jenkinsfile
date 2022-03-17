@@ -98,12 +98,13 @@ pipeline {
       
 			steps{   
 				script {
+					 def pass
 					withCredentials([usernamePassword(credentialsId: '1234', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
- sshagent(['vagrant_ubuntu_json_version']) {		
+	
 	 
-  sh 'echo $PASSWORD'
-  // also available as a Groovy variable
-  echo USERNAME
+ pass=PASSWORD
+ /* // also available as a Groovy variable
+   USERNAME
 	echo PASSWORD					
   // or inside double quotes for string interpolation
   echo "username is $USERNAME"
@@ -112,8 +113,14 @@ pipeline {
       '''
 						
 sh "sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}"
- }  
-}
+
+ 
+						
+					}*/
+				 
+					sshagent(['vagrant_ubuntu_json_version']) {	
+					echo pass
+					}
 				} 
 			} 
     
