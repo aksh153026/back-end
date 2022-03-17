@@ -66,7 +66,7 @@ pipeline {
         
 			//when {
 			//	expression {   
-					env.GIT_BRANCH_NAME=='origin/dev' 
+				//	env.GIT_BRANCH_NAME=='origin/dev' 
 			//	}
 			//}
     
@@ -100,7 +100,7 @@ pipeline {
 				script {
 				withDockerRegistry(credentialsId: "1234", url: "http://192.168.29.240:8083/") {
 				sh """#!/bin/bash 
-				sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}
+			//	sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}
 				"""
 				}
 				} 
