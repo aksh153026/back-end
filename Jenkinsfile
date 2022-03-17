@@ -114,10 +114,10 @@ pipeline {
 						
 sh "sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}"
 
- 
+ */
 						
-					}*/
-				 
+					}
+				 echo pass
 					sshagent(['vagrant_ubuntu_json_version']) {	
 					echo pass
 					}
