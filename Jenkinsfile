@@ -64,11 +64,11 @@ pipeline {
 		*/
 	/*    stage ('Push dev image to sonartype nexus back-end') { 
         
-			/*when {
-				expression {   
+			//when {
+			//	expression {   
 					env.GIT_BRANCH_NAME=='origin/dev' 
-				}
-			}*/
+			//	}
+			//}
     
 			steps {
         
@@ -83,7 +83,7 @@ pipeline {
 				}
 			}
        
-		}
+		} */
 		
 		stage ('Pull image from sonartype nexus in dev server back-end') { // take that image and push to artifactory
 			/*when {
