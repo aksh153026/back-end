@@ -144,12 +144,12 @@ sh "sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}"
 					// the name you have given the Sonar Scanner (Global Tool Configuration)
 				}
     
-				withSonarQubeEnv('sonar_mvn') {
+				/*withSonarQubeEnv('sonar_mvn') {
          //   echo scannerHome 
 					
 					bat "cd scrum-app && mvn -f pom.xml clean package && "+scannerHome+"\\bin\\sonar-scanner.bat -Dsonar.projectKey=mavan -Dsonar.projectName=maven  -Dsonar.projectVersion=1.2 -Dsonar.sources=src/  -Dsonar.java.binaries=target/classes/* -Dsonar.java.source=1.8 -Dsonar.jacoco.reportsPath=target/jacoco.exec -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.junit.reportsPath=target/surefire-reports/"
 					
-				}
+				}*/
 				
 			}
        }
