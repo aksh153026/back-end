@@ -61,7 +61,7 @@ pipeline {
             }
 		}
 		
-		*/
+	
 	  stage ('Push dev image to sonartype nexus back-end') { 
         
 			//when {
@@ -86,11 +86,11 @@ pipeline {
 		} 
 		
 		stage ('Pull image from sonartype nexus in dev server back-end') { // take that image and push to artifactory
-			/*when {
-				expression {   
-					env.GIT_BRANCH_NAME=='origin/dev' 
-				}
-			}*/
+			// when {
+			//	expression {   
+			//		env.GIT_BRANCH_NAME=='origin/dev' 
+			//	}
+			//}
      
 			agent {
 				label 'ubuntu_jsos'
@@ -124,13 +124,13 @@ sh "sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}"
     
           
 		}
-	 
+	 */
 		stage ('Code Quality scan back-end')  {
-			/* when {
-				expression {   
-					env.GIT_BRANCH_nNAME=='origin/qa' 
-				}
-			} */
+			// when {
+			//	expression {   
+			//		env.GIT_BRANCH_nNAME=='origin/qa' 
+			//	}
+			//} 
 			tools {
 				jdk "jh" 
 			}
@@ -154,8 +154,8 @@ sh "sudo docker pull 192.168.29.240:8083/backend:${env.BUILD_ID}"
 			}
        }
 	
-	    
-		/*
+	    /*
+		
         stage ('Push dev image to sonartype nexus back-end') { 
         
 			when {
